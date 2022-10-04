@@ -1,0 +1,23 @@
+class Solution{
+    int n, m;
+    vector <vector<string>> s;
+    vector <string> v;
+    public:
+    void dfs(vector<vector<string>> &A, int i, int j){
+        if(i == n || j == m){
+            s.push_back(v);
+            return;
+        }
+        for(int k=0; k<m; k++){
+            v.push_back(A[i][k]);
+            dfs(A, i+1, k);
+            v.pop_back();
+        }
+    }
+    vector<vector<string>> sentences(vector<vector<string>>&A){
+        n = A.size();
+        m = A[0].size();
+        dfs(A, 0, 0);
+        return s;
+    }
+};
